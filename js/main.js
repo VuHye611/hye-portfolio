@@ -121,6 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const isEn = lang === 'en';
     document.querySelectorAll('.nav__lang').forEach(l => l.textContent = isEn ? 'EN / VN' : 'VN / EN');
 
+    const formLink = document.getElementById('commission-form-link');
+    if (formLink) formLink.href = isEn ? 'https://forms.gle/UKWs1fhY8XMVj5KV9' : 'https://forms.gle/K48z95Ke9k8MedVp9';
+
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.dataset.i18n;
       if (isEn && i18n[key]) {
