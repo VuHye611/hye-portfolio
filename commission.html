@@ -179,115 +179,16 @@
   </div>
 </section>
 
-<!-- Form -->
+<!-- Order CTA -->
 <section class="form-section fade-up" id="order-form">
   <div class="section-heading">
     <h2>Đặt commission</h2>
     <div class="line"></div>
   </div>
-  <p class="form-intro">Điền form — Hye sẽ phản hồi sớm nhất có thể</p>
-  <form class="form" action="https://formspree.io/f/xpqvynkg" method="POST">
-    <div class="form-row">
-      <div class="form-group">
-        <label class="form-label">Tên / Nickname <span class="required">*</span></label>
-        <input type="text" name="name" class="form-input" placeholder="Nhập tên của bạn..." required>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Liên hệ <span class="required">*</span></label>
-        <input type="text" name="contact" class="form-input" placeholder="Email, IG, hoặc cách Hye liên lạc được với bạn" required>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="form-label">Style <span class="required">*</span></label>
-      <div class="form-radio-group">
-        <label class="form-radio">
-          <input type="radio" name="style" value="bw" required>
-          <span>B&W Doodle</span>
-        </label>
-        <label class="form-radio">
-          <input type="radio" name="style" value="color">
-          <span>Full Color</span>
-        </label>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="form-label">Khung hình <span class="required">*</span></label>
-      <input type="hidden" name="frame" value="Headshot">
-      <div class="frame-grid">
-        <div class="frame-option active" data-frame="Headshot">
-          <div class="frame-option__preview"><span style="font-size:11px; color:#a0907a; letter-spacing:1px; text-transform:uppercase">Ảnh</span></div>
-          <span>Headshot</span>
-        </div>
-        <div class="frame-option" data-frame="Waist-up">
-          <div class="frame-option__preview"><span style="font-size:11px; color:#a0907a; letter-spacing:1px; text-transform:uppercase">Ảnh</span></div>
-          <span>Waist-up</span>
-        </div>
-        <div class="frame-option" data-frame="Full-body">
-          <div class="frame-option__preview"><span style="font-size:11px; color:#a0907a; letter-spacing:1px; text-transform:uppercase">Ảnh</span></div>
-          <span>Full-body</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="form-label">Tỷ lệ khung hình <span class="required">*</span></label>
-      <div class="form-radio-group">
-        <label class="form-radio">
-          <input type="radio" name="ratio" value="1:1" required>
-          <span>1:1 <small>(3000×3000 px)</small></span>
-        </label>
-        <label class="form-radio">
-          <input type="radio" name="ratio" value="3:4">
-          <span>3:4 <small>(3000×4000 px)</small></span>
-        </label>
-        <label class="form-radio">
-          <input type="radio" name="ratio" value="9:16">
-          <span>9:16 <small>(1800×3200 px)</small></span>
-        </label>
-        <label class="form-radio">
-          <input type="radio" name="ratio" value="custom">
-          <span>Tùy chỉnh</span>
-        </label>
-      </div>
-      <input type="text" name="custom_ratio" class="form-input" style="margin-top:10px" placeholder="Nhập kích thước mong muốn, ví dụ: 2000×3000 px">
-    </div>
-
-    <div class="form-group">
-      <label class="form-label">Số lượng nhân vật <span class="required">*</span></label>
-      <div class="number-input">
-        <input type="number" name="characters" value="1" min="1" max="10">
-        <div class="number-input__controls">
-          <button type="button" class="num-up">▲</button>
-          <button type="button" class="num-down">▼</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="form-label">Mô tả yêu cầu <span class="required">*</span></label>
-      <textarea class="form-input" name="description" placeholder="Mô tả nhân vật, bối cảnh, mood bạn muốn..." required></textarea>
-    </div>
-
-    <div class="form-group">
-      <label class="form-label">Ảnh tham khảo</label>
-      <label class="file-upload">
-        <input type="file" name="references" multiple accept="image/*">
-        <span class="file-upload__text">Bấm để chọn ảnh — tối đa 5 ảnh</span>
-      </label>
-      <div class="file-preview"></div>
-    </div>
-
-    <div class="form-group">
-      <label class="form-label">Lưu ý về deadline cho artist (không bắt buộc)</label>
-      <textarea class="form-input" name="deadline" style="min-height:48px" placeholder="Ví dụ: Mình cần trước ngày 20/8 để làm quà sinh nhật"></textarea>
-    </div>
-
-    <div class="form-submit">
-      <button type="submit" class="btn btn--primary">Gửi yêu cầu đặt commission</button>
-    </div>
-  </form>
+  <div class="order-cta">
+    <p class="order-cta__desc">Đã sẵn sàng? Điền form bên dưới — Hye sẽ phản hồi sớm nhất có thể.</p>
+    <a href="https://forms.gle/K48z95Ke9k8MedVp9" target="_blank" rel="noopener" class="btn btn--primary">Đặt commission</a>
+  </div>
 </section>
 
 <footer class="footer">

@@ -54,92 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Number input
-  const numInput = document.querySelector('.number-input input');
-  if (numInput) {
-    document.querySelector('.num-up')?.addEventListener('click', () => {
-      numInput.value = Math.min(10, parseInt(numInput.value || 1) + 1);
-    });
-    document.querySelector('.num-down')?.addEventListener('click', () => {
-      numInput.value = Math.max(1, parseInt(numInput.value || 1) - 1);
-    });
-  }
-
-  // Frame selection
-  const frameInput = document.querySelector('input[name="frame"]');
-  document.querySelectorAll('.frame-option').forEach(opt => {
-    opt.addEventListener('click', () => {
-      document.querySelectorAll('.frame-option').forEach(o => o.classList.remove('active'));
-      opt.classList.add('active');
-      if (frameInput) frameInput.value = opt.dataset.frame;
-    });
-  });
-
-  // File upload preview
-  const fileInput = document.querySelector('.file-upload input[type="file"]');
-  const filePreview = document.querySelector('.file-preview');
-  const fileText = document.querySelector('.file-upload__text');
-  if (fileInput && filePreview) {
-    fileInput.addEventListener('change', () => {
-      filePreview.innerHTML = '';
-      const files = Array.from(fileInput.files).slice(0, 5);
-      if (files.length === 0) {
-        if (fileText) fileText.textContent = 'Bấm để chọn ảnh — tối đa 5 ảnh';
-        return;
-      }
-      if (fileText) fileText.textContent = files.length + ' ảnh đã chọn';
-      files.forEach((file, i) => {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const div = document.createElement('div');
-          div.className = 'file-preview__item';
-          div.innerHTML = '<img src="' + e.target.result + '" alt="Ảnh ' + (i + 1) + '">'
-            + '<button type="button" class="file-preview__remove" title="Xóa">×</button>';
-          div.querySelector('.file-preview__remove').addEventListener('click', () => {
-            div.remove();
-            if (filePreview.children.length === 0) {
-              fileInput.value = '';
-              if (fileText) fileText.textContent = 'Bấm để chọn ảnh — tối đa 5 ảnh';
-            }
-          });
-          filePreview.appendChild(div);
-        };
-        reader.readAsDataURL(file);
-      });
-    });
-  }
-
-  // Form submission (Formspree)
-  const form = document.querySelector('.form');
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const submitBtn = form.querySelector('.btn--primary');
-      const formData = new FormData(form);
-      if (submitBtn) { submitBtn.textContent = 'Đang gửi...'; submitBtn.disabled = true; }
-      fetch(form.action, {
-        method: 'POST', body: formData, headers: { 'Accept': 'application/json' }
-      }).then(response => {
-        if (response.ok) {
-          if (submitBtn) { submitBtn.textContent = 'Đã gửi thành công!'; submitBtn.style.background = '#22C55E'; }
-          form.reset();
-          if (filePreview) filePreview.innerHTML = '';
-          if (fileText) fileText.textContent = 'Bấm để chọn ảnh — tối đa 5 ảnh';
-          document.querySelectorAll('.frame-option').forEach((o, i) => o.classList.toggle('active', i === 0));
-          if (frameInput) frameInput.value = 'Headshot';
-        } else {
-          if (submitBtn) { submitBtn.textContent = 'Gửi thất bại — thử lại'; submitBtn.style.background = '#C93A2A'; }
-        }
-      }).catch(() => {
-        if (submitBtn) { submitBtn.textContent = 'Lỗi mạng — thử lại'; submitBtn.style.background = '#C93A2A'; }
-      }).finally(() => {
-        setTimeout(() => {
-          if (submitBtn) { submitBtn.textContent = 'Gửi yêu cầu đặt commission'; submitBtn.style.background = ''; submitBtn.disabled = false; }
-        }, 3000);
-      });
-    });
-  }
-
   // ========== VN/EN LANGUAGE (persisted across pages) ==========
   const i18n = {
     // Navigation
@@ -182,19 +96,8 @@ document.addEventListener('DOMContentLoaded', () => {
     'Bản quyền': 'Copyright',
     'Hye không nhận đơn khi': 'Hye does not accept orders when',
     'Đặt commission': 'Order commission',
-    'Điền form — Hye sẽ phản hồi sớm nhất có thể': 'Fill form — Hye will respond as soon as possible',
-    'Gửi yêu cầu đặt commission': 'Submit commission request',
-    'Tên / Nickname': 'Name / Nickname',
-    'Liên hệ': 'Contact',
-    'Style': 'Style',
-    'Khung hình': 'Frame type',
-    'Tỷ lệ khung hình': 'Aspect ratio',
-    'Tùy chỉnh': 'Custom',
-    'Số lượng nhân vật': 'Character count',
-    'Mô tả yêu cầu': 'Description',
-    'Ảnh tham khảo': 'Reference images',
-    'Bấm để chọn ảnh — tối đa 5 ảnh': 'Click to choose images — max 5',
-    'Lưu ý về deadline cho artist (không bắt buộc)': 'Deadline notes for artist (optional)',
+    'Đã sẵn sàng? Điền form bên dưới — Hye sẽ phản hồi sớm nhất có thể.': 'Ready? Fill the form below — Hye will respond as soon as possible.',
+    'Đặt commission': 'Order commission',
     'Phong cách đen trắng, nét vẽ phóng khoáng, chi tiết cao. Phù hợp cho truyện tranh, minh họa sách.': 'Black & white style, expressive strokes, high detail. Great for comics, book illustration.',
     'Có màu sắc, bảng màu theo yêu cầu. Phù hợp làm ảnh đại diện, poster cá nhân, quà tặng đặc biệt.': 'Full color, palette per request. Great for avatars, personal posters, special gifts.',
     'Headshot': 'Headshot',
