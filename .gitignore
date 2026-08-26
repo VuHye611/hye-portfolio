@@ -10,3 +10,9 @@ desktop.ini
 
 # Claude Code local files
 .claude/
+
+# Dependencies
+node_modules/
+
+# Dependencies
+node_modules/

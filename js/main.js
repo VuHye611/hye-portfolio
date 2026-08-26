@@ -28,18 +28,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  // Portfolio filter tabs
-  const filterTabs = document.querySelectorAll('.filter-tab');
-  const galleryItems = document.querySelectorAll('.gallery-item');
-  const galleryEmpty = document.querySelector('.gallery-empty');
-
-  filterTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      filterTabs.forEach(t => t.classList.remove('active'));
+  // Portfolio filter tabs — event delegation for dynamic content
+  const filterContainer = document.querySelector('.filter-tabs');
+  if (filterContainer) {
+    filterContainer.addEventListener('click', (e) => {
+      const tab = e.target.closest('.filter-tab');
+      if (!tab) return;
+      filterContainer.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
       const filter = tab.dataset.filter;
       let visibleCount = 0;
-      galleryItems.forEach(item => {
+      document.querySelectorAll('.gallery-item').forEach(item => {
         const categories = item.dataset.category || '';
         if (filter === 'all' || categories.includes(filter)) {
           item.style.display = '';
@@ -48,11 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
           item.style.display = 'none';
         }
       });
+      const galleryEmpty = document.querySelector('.gallery-empty');
       if (galleryEmpty) {
         galleryEmpty.style.display = visibleCount === 0 ? 'flex' : 'none';
       }
     });
-  });
+  }
 
   // Number input
   const numInput = document.querySelector('.number-input input');
@@ -262,6 +262,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentLang = localStorage.getItem('hye_lang') || 'vi';
   if (currentLang === 'en') applyLanguage('en');
 
+  window.reapplyLanguage = function() {
+    const lang = localStorage.getItem('hye_lang') || 'vi';
+    if (lang === 'en') applyLanguage('en');
+  };
+
   document.querySelectorAll('.nav__lang').forEach(btn => {
     btn.style.cursor = 'pointer';
     btn.addEventListener('click', () => {
@@ -288,7 +293,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const popupNext = document.querySelector('.popup__nav--next');
   const popupImageContainer = document.querySelector('.popup__image');
 
-  if (popup && galleryItems.length > 0) {
+  const masonry = document.querySelector('.gallery-masonry');
+  if (popup && masonry) {
     let zoomLevel = 1;
     let panX = 0, panY = 0;
     let isDragging = false;
@@ -296,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
 
     function getVisibleItems() {
-      return Array.from(galleryItems).filter(item => item.style.display !== 'none');
+      return Array.from(document.querySelectorAll('.gallery-item')).filter(item => item.style.display !== 'none');
     }
 
     function updatePopupContent(item) {
@@ -344,12 +350,12 @@ document.addEventListener('DOMContentLoaded', () => {
       updatePopupContent(items[currentIndex]);
     }
 
-    galleryItems.forEach(item => {
-      item.addEventListener('click', () => {
-        const items = getVisibleItems();
-        const idx = items.indexOf(item);
-        if (idx !== -1) openPopup(idx);
-      });
+    masonry.addEventListener('click', (e) => {
+      const item = e.target.closest('.gallery-item');
+      if (!item) return;
+      const items = getVisibleItems();
+      const idx = items.indexOf(item);
+      if (idx !== -1) openPopup(idx);
     });
 
     if (popupClose) popupClose.addEventListener('click', closePopup);
