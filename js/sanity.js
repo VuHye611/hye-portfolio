@@ -152,7 +152,7 @@
             + priceRows
             + '<div class="pricing-row"><span>Thêm nhân vật</span><span>' + esc(extraChar) + '</span></div>'
             + '</div>'
-            + '<div class="pricing-note">Chỉnh sửa thêm (từ lần 4): <strong style="color:var(--brown)">' + esc(revisionFee) + '</strong> · Cần gấp: <strong style="color:var(--red)">' + esc(rushMultiplier) + '</strong></div>'
+            + '<div class="pricing-note"><span>Chỉnh sửa thêm (từ lần 4):</span> <strong style="color:var(--brown)">' + esc(revisionFee) + '</strong> · <span>Cần gấp:</span> <strong style="color:var(--red)">' + esc(rushMultiplier) + '</strong></div>'
             + '</div></div>';
         }).join('');
       }

@@ -506,7 +506,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   display: flex;
   flex-direction: column;
   position: relative;
-  padding-left: 40px;
+  padding-left: 64px;
 }
 .timeline::before {
   content: '';
@@ -537,7 +537,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   justify-content: center;
   flex-shrink: 0;
   position: absolute;
-  left: -40px;
+  left: -64px;
   z-index: 1;
 }
 .timeline-step:last-child .timeline-step__number { background: var(--red); }
@@ -1046,7 +1046,8 @@ textarea.form-input { min-height: 100px; resize: vertical; }
   .cta-banner { flex-direction: column; text-align: center; gap: 24px; }
   .cta-banner h3 { font-size: 28px; }
 
-  .section-heading h2 { font-size: 32px !important; }
+  .section-heading h2 { font-size: 32px !important; white-space: normal; line-height: 1.15; }
+  .section-heading .line { min-width: 24px; }
   .section-heading { gap: 12px; margin-bottom: 24px; }
 
   .gallery-masonry { columns: 2; }

@@ -95,6 +95,24 @@ document.addEventListener('DOMContentLoaded', () => {
     'Hoàn tiền': 'Refund',
     'Bản quyền': 'Copyright',
     'Hye không nhận đơn khi': 'Hye does not accept orders when',
+    '50% trước khi bắt đầu, 50% khi giao file. Không cọc = không bắt đầu. Thanh toán qua chuyển khoản ngân hàng, MoMo, hoặc PayPal (khách quốc tế).': '50% before starting, 50% on delivery. No deposit = no start. Pay via bank transfer, MoMo, or PayPal (international clients).',
+    'Tối đa 2 phiên bản. Nếu không phù hợp → hoàn 100% cọc, không hỏi thêm.': 'Up to 2 versions. If it’s not a fit → 100% deposit refund, no questions asked.',
+    '3 lần miễn phí. Từ lần 4: 50k/lần.': '3 free revisions. From the 4th: 50k each.',
+    '5–10 ngày tùy độ phức tạp. Cần gấp = nhân đôi giá.': '5–10 days depending on complexity. Rush order = double price.',
+    'Ngoài trường hợp ở mục ②, sau khi hoàn thiện bản chính thức thì không hoàn cọc.': 'Except for the case in ②, the deposit is non-refundable once the final version is completed.',
+    'Khách nhận file PNG 300dpi, dùng cá nhân. Dùng thương mại cộng phí + nhận thêm file PSD. Hye giữ quyền đăng portfolio, trừ khi khách trả thêm giữ riêng tư.': 'You receive a 300dpi PNG for personal use. Commercial use costs extra and includes the PSD file. Hye keeps the right to post the work in the portfolio, unless you pay extra to keep it private.',
+    'Nội dung vi phạm bản quyền / 18+ / công kích cá nhân. Đã cọc thì hoàn 100%.': 'The content infringes copyright / is 18+ / attacks someone personally. Any deposit paid is 100% refunded.',
+    // Timeline tags
+    'Bạn': 'You',
+    'Hye vẽ → Bạn duyệt': 'Hye draws → You review',
+    // Pricing notes
+    'Chỉnh sửa thêm (từ lần 4):': 'Extra revisions (from the 4th):',
+    'Cần gấp:': 'Rush:',
+    '50k/lần': '50k/each',
+    'Commission hiện đang đóng': 'Commissions are closed',
+    // Portfolio CTA
+    'Thích phong cách của Hye?': 'Like Hye’s style?',
+    'Đặt một tác phẩm vẽ riêng cho bạn — B&W Doodle từ 200K, Full Color từ 350K.': 'Get an artwork drawn just for you — B&W Doodle from 200K, Full Color from 350K.',
     'Đặt commission': 'Order commission',
     'Đã sẵn sàng? Điền form bên dưới — Hye sẽ phản hồi sớm nhất có thể.': 'Ready? Fill the form below — Hye will respond as soon as possible.',
     'Đặt commission': 'Order commission',
@@ -133,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    document.querySelectorAll('h1, h2, h3, h4, p, a, span, button, label, summary').forEach(el => {
+    document.querySelectorAll('h1, h2, h3, h4, p, a, span, strong, button, label, summary, .rule-body').forEach(el => {
       if (el.children.length > 0 && !el.classList.contains('form-label')) return;
       if (el.closest('.artwork-popup')) return;
       if (el.classList.contains('nav__lang')) return;
